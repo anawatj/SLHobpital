@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.arg.arsoft.siantluis.domains.master">
+
+  
+    <class name="Province" table="tbl_province">
+         <id name="id" type="int" column="id">
+            <generator class="native"></generator>
+        </id>
+        <version column="version" name="version"></version>
+        <property name="code" column="code"></property>
+        <property name="desc" column="desc"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+</hibernate-mapping>

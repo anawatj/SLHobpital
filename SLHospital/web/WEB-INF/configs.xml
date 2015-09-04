@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <purchaseStatuses>
+        <purchaseStatus code="P" desc="Process">
+            
+        </purchaseStatus> 
+        <purchaseStatus code="A" desc="Approve">
+            
+        </purchaseStatus>
+    </purchaseStatuses>
+</configs>

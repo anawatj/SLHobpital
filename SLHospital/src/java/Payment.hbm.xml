@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.arg.arsoft.siantluis.domains.payment.Payment" table="tbl_payment">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="code" column="code"></property>
+        <property name="name" column="name"></property>
+        <property name="paymentDate" column="payment_date"></property>
+        <many-to-one name="paymentBy" column="payment_by" class="com.arg.arsoft.siantluis.domains.employee.Employee" not-found="ignore"></many-to-one>
+        <property name="approveDate" column="approve_date"></property>
+        <many-to-one name="approveBy" column="approve_by" class="com.arg.arsoft.siantluis.domains.employee.Employee" not-found="ignore"></many-to-one>
+        <property name="status" column="status">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.payment.PaymentStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <many-to-one name="department" column="department_id" class="com.arg.arsoft.siantluis.domains.master.Department" not-found="ignore"></many-to-one>
+        <many-to-one name="branch" column="branch_id" class="com.arg.arsoft.siantluis.domains.master.Branch" not-found="ignore"></many-to-one>
+        <many-to-one name="attachment" column="attachment_id" class="com.arg.arsoft.siantluis.domains.attachment.Attachment" not-found="ignore"></many-to-one>
+        <set name="purchases" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentPurchaseItem" not-found="ignore"></one-to-many>
+        </set>
+        <set name="expenses" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentExpenseItem" not-found="ignore"></one-to-many>
+        </set>
+        <set name="cashes" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentByCash" not-found="ignore"></one-to-many>
+        </set>
+        <set name="cheques" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentByCheque" not-found="ignore"></one-to-many>
+        </set>
+        <set name="credits" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentByCredit" not-found="ignore"></one-to-many>
+        </set>
+        <set name="transfers" cascade="all-delete-orphan">
+            <key column="payment_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.payment.PaymentByTransfer" not-found="ignore"></one-to-many>
+        </set>
+        
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+  
+
+</hibernate-mapping>

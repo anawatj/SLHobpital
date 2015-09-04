@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.arg.arsoft.siantluis.domains.purchase.PurchaseItem" table="tbl_purchase_item" abstract="true">
+           <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <discriminator column="type" type="string"  force="true"></discriminator>
+        <version name="version" column="version"></version>
+        <property name="purchaseId" column="purchase_id"></property>
+        <property name="flagVat" column="flag_vat">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.purchase.FlagVat</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property name="quantity" column="quantity"></property>
+        <property name="unitPrice" column="unit_price"></property>
+        <property name="vat" column="vat"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+    <subclass name="com.arg.arsoft.siantluis.domains.purchase.PurchaseItemProduct" discriminator-value="P" extends="com.arg.arsoft.siantluis.domains.purchase.PurchaseItem" >
+        <many-to-one name="product" column="product_id" class="com.arg.arsoft.siantluis.domains.product.Product" not-found="ignore"></many-to-one>
+        
+    </subclass>
+    <subclass name="com.arg.arsoft.siantluis.domains.purchase.PurchaseItemService" discriminator-value="S" extends="com.arg.arsoft.siantluis.domains.purchase.PurchaseItem" >
+        <many-to-one name="service" column="service_id" class="com.arg.arsoft.siantluis.domains.master.Service" not-found="ignore"></many-to-one>
+    </subclass>
+
+</hibernate-mapping>

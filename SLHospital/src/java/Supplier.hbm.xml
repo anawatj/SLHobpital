@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.arg.arsoft.siantluis.domains.supplier.Supplier" table="tbl_supplier">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="code" column="code"></property>
+        <property name="compny" column="company"></property>
+        <property name="name" column="name"></property>
+        <component name="contact" class="com.arg.arsoft.siantluis.domains.master.Contact" lazy="false">
+            <property name="contactName" column="contact_name"></property>
+            <property name="tel" column="tel"></property>
+            <property name="mobile" column="mobile"></property>
+            <property name="fax" column="fax"></property>
+            <property name="homePage" column="home_page"></property>
+            <property name="email" column="email"></property>
+        </component>
+        <component name="address" class="com.arg.arsoft.siantluis.domains.master.Address" lazy="false">
+            <property name="addressNo" column="address_no"></property>
+            <property name="road" column="road"></property>
+            <property name="soi" column="soi"></property>
+            <property name="moo" column="moo"></property>
+            <property name="district" column="district"></property>
+            <many-to-one name="amphur" class="com.arg.arsoft.siantluis.domains.master.Amphur" column="amphur_id" not-found="ignore"></many-to-one>
+            <many-to-one name="province" class="com.arg.arsoft.siantluis.domains.master.Province" column="province_id" not-found="ignore"></many-to-one>
+        </component>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.arg.arsoft.siantluis.domains.reservation.ReservationItem" abstract="true" table="tbl_reservation_item">
+        
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <discriminator column="resv_item_type" type="string" force="true"></discriminator>
+        <version name="version" column="version"></version>
+        <property name="reservationId" column="reservation_id"></property>
+        <property name="resvFromDate" column="resv_from_date"></property>
+        <property name="resvFromTime" column="resv_from_time"></property>
+        <property name="resvToDate" column="resv_to_date"></property>
+        <property name="resvToTime" column="resv_to_time"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+    <subclass name="com.arg.arsoft.siantluis.domains.reservation.ReservationRoomItem" extends="com.arg.arsoft.siantluis.domains.reservation.ReservationItem" discriminator-value="R">
+        <many-to-one name="equipment" column="equipment_id" class="com.arg.arsoft.siantluis.domains.master.RoomEquipment" not-found="ignore" ></many-to-one>
+    </subclass>
+    <subclass name="com.arg.arsoft.siantluis.domains.reservation.ReservationMotorItem" extends="com.arg.arsoft.siantluis.domains.reservation.ReservationItem" discriminator-value="M">
+        <many-to-one name="equipment" column="equipment_id" class="com.arg.arsoft.siantluis.domains.master.MotorEquipment" not-found="ignore"></many-to-one>
+        <property name="quantity" column="quantity"></property>
+    </subclass>
+    <subclass name="com.arg.arsoft.siantluis.domains.reservation.ReservationITItem" extends="com.arg.arsoft.siantluis.domains.reservation.ReservationItem" discriminator-value="I">
+        <many-to-one name="equipment" column="equipment_id" class="com.arg.arsoft.siantluis.domains.master.ITEquipment" not-found="ignore"></many-to-one>
+        <property name="serialNo" column="serial_no"></property>
+    </subclass>
+</hibernate-mapping>

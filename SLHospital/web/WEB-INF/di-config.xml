@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+">
+    <bean id="employeeRepository" class="com.arg.arsoft.siantluis.repository.imp.EmployeeRepository">
+        
+    </bean>
+    <bean id="masterDataObjectRepository" class="com.arg.arsoft.siantluis.repository.imp.MasterDataObjectRepository">
+        
+    </bean>
+    <bean id="claimUploadRepository" class="com.arg.arsoft.siantluis.repository.imp.ClaimUploadRepository">
+        
+    </bean>
+    <bean id="addressRepository" class="com.arg.arsoft.siantluis.repository.imp.AddressRepository">
+        
+    </bean>
+    <bean id="supplierRepository" class="com.arg.arsoft.siantluis.repository.imp.SupplierRepository">
+        
+    </bean>
+    <bean id="customerRepository" class="com.arg.arsoft.siantluis.repository.imp.CustomerRepository">
+        
+    </bean>
+    <bean id="productRepository" class="com.arg.arsoft.siantluis.repository.imp.ProductRepository">
+        
+    </bean>
+       <bean id="authorizationFilterBean" class="com.arg.arsoft.siantluis.web.filter.AuthorizationFilter">
+    </bean>
+    <bean id="projectRepository" class="com.arg.arsoft.siantluis.repository.imp.ProjectRepository">
+        
+    </bean>
+    <bean id="purchaseRepository" class="com.arg.arsoft.siantluis.repository.imp.PurchaseRepository">
+        
+    </bean>
+    <bean id="orderRepository" class="com.arg.arsoft.siantluis.repository.imp.OrderRepository">
+        
+    </bean>
+    <bean id="userRepository" class="com.arg.arsoft.siantluis.repository.imp.UserRepository">
+        
+    </bean>
+    <bean id="roleRepository" class="com.arg.arsoft.siantluis.repository.imp.RoleRepository">
+        
+    </bean>
+    <bean id="attachmentRepository" class="com.arg.arsoft.siantluis.repository.imp.AttachmentRepository"></bean>
+    <bean id="reservationRepository" class="com.arg.arsoft.siantluis.repository.imp.ReservationRepository"></bean>
+    <bean id="paymentRepository" class="com.arg.arsoft.siantluis.repository.imp.PaymentRepository"></bean>
+    
+</beans>

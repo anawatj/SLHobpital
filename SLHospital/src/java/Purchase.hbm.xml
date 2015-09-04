@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.arg.arsoft.siantluis.domains.purchase.Purchase" table="tbl_purchase">
+         <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="code" column="code"></property>
+        <property name="purchaseDate" column="purchase_date"></property>
+        <many-to-one name="purchaseBy" column="purchase_by" class="com.arg.arsoft.siantluis.domains.employee.Employee"></many-to-one>
+        <property name="description" column="description"></property>
+        <property name="status" column="status">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.purchase.PurchaseStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <many-to-one name="approveBy" column="approve_by" class="com.arg.arsoft.siantluis.domains.employee.Employee" not-found="ignore"></many-to-one>        
+        <property name="approveDate" column="approve_date"></property>
+        <many-to-one name="supplier" column="supplier_id" class="com.arg.arsoft.siantluis.domains.supplier.Supplier" not-found="ignore"></many-to-one>
+        <many-to-one name="branch" column="branch_id" class="com.arg.arsoft.siantluis.domains.master.Branch" not-found="ignore"></many-to-one>
+        <many-to-one name="department" column="department_id" class="com.arg.arsoft.siantluis.domains.master.Department" not-found="ignore"></many-to-one>
+        <set name="products" cascade="all-delete-orphan">
+            <key column="purchase_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.purchase.PurchaseItemProduct" not-found="ignore"></one-to-many>
+        </set>        
+        <set name="services" cascade="all-delete-orphan">
+            <key column="purchase_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.purchase.PurchaseItemService" not-found="ignore"></one-to-many>
+        </set>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+
+</hibernate-mapping>

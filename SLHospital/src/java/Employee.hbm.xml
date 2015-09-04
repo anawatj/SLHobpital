@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.arg.arsoft.siantluis.domains.employee">
+    <class  name="Employee" table="tbl_employee">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="code" column="code"></property>
+        <many-to-one name="title" column="title_id" class="com.arg.arsoft.siantluis.domains.master.Title" not-found="ignore"></many-to-one>
+        <property name="firstName" column="first_name"></property>
+        <property name="lastName" column="last_name"></property>
+        <property name="birthDate" column="birth_date"></property>
+        <property name="salary" column="salary"></property>
+        <component name="address" class="com.arg.arsoft.siantluis.domains.master.Address" lazy="false">
+            <property name="addressNo" column="address_no"></property>
+            <property name="road" column="road"></property>
+            <property name="soi" column="soi"></property>
+            <property name="moo" column="moo"></property>
+            <property name="district" column="district"></property>
+            <many-to-one name="amphur" class="com.arg.arsoft.siantluis.domains.master.Amphur" column="amphur_id" not-found="ignore"></many-to-one>
+            <many-to-one name="province" class="com.arg.arsoft.siantluis.domains.master.Province" column="province_id" not-found="ignore"></many-to-one>
+        </component>
+        <property name="fatherName" column="father_name"></property>
+        <property name="fatherOccupation" column="father_occupation"></property>
+        <property name="fatherCompany" column="father_company"></property>
+        <property name="fatherTel" column="father_tel"></property>
+        <property name="fatherAddress" column="father_address"></property>
+        
+        <property name="motherName" column="mother_name"></property>
+        <property name="motherOccupation" column="mother_occupation"></property>
+        <property name="motherCompany" column="mother_company"></property>
+        <property name="motherTel" column="mother_tel"></property>
+        <property name="motherAddress" column="mother_address"></property>
+        
+        <property name="supouseName" column="supouse_name"></property>
+        <property name="supouseOccupation" column="supouse_occupation"></property>
+        <property name="suposeCompany" column="supouse_company"></property>
+        <property name="suposeTel" column="supouse_tel"></property>
+        <property name="suposeAddress" column="supouse_address"></property>
+        
+        <property name="contactName" column="contact_name" ></property>
+        <property name="conatctAddress" column="contact_address"></property>
+        <property name="contactTel" column="contact_tel"></property>
+        <property name="contactRelation" column="contact_relation"></property>
+        <property name="marital" column="marital_status">
+              <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.employee.MaritalStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+      
+        <many-to-one name="department" column="department_id"  class="com.arg.arsoft.siantluis.domains.master.Department" not-found="ignore"></many-to-one>             
+        <many-to-one name="branch" column="branch_id" class="com.arg.arsoft.siantluis.domains.master.Branch" not-found="ignore"></many-to-one>
+        <many-to-one name="position" column="position_id" class="com.arg.arsoft.siantluis.domains.master.Position" not-found="ignore"></many-to-one>
+       
+        <set name="educations" cascade="all-delete-orphan" >
+            <key>
+                <column name="employee_id"></column>
+            </key>
+            <one-to-many class="Education" not-found="ignore"></one-to-many>
+        </set>
+        <bag name="hobbies" cascade="all" table="tbl_employee_hobby"  >
+            <key>
+                <column name="employee_id"></column>
+            </key>
+            <many-to-many class="com.arg.arsoft.siantluis.domains.master.Hobby" not-found="ignore">
+                <column name="hobby_id"></column>
+            </many-to-many>
+        </bag>
+        <set name="experiences" cascade="all-delete-orphan">
+            <key>
+                <column name="employee_id"></column>
+            </key>
+            <one-to-many class="Experience" not-found="ignore"></one-to-many>
+        </set>
+        <set name="siblings" cascade="all-delete-orphan">
+            <key column="employee_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.employee.Sibling" not-found="ignore"></one-to-many>
+        </set>
+        <set name="references" cascade="all-delete-orphan">
+            <key column="employee_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.employee.Reference" not-found="ignore"></one-to-many>
+        </set>
+        <set name="languages" cascade="all-delete-orphan" >
+            <key column="employee_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.employee.EmployeeLanguage" not-found="ignore"></one-to-many>
+        </set>
+        <set name="children" cascade="all-delete-orphan">
+            <key column="employee_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.employee.Children" not-found="ignore"></one-to-many>
+        </set>
+        <set name="trainings" cascade="all-delete-orphan">
+            <key column="employee_id"></key>
+            <one-to-many class="com.arg.arsoft.siantluis.domains.employee.Training" not-found="ignore"></one-to-many>
+        </set>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+  
+
+</hibernate-mapping>

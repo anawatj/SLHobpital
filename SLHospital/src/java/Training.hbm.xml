@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.arg.arsoft.siantluis.domains.employee.Training" table="tbl_training">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="employeeId" column="employee_id"></property>
+        <property name="company" column="company"></property>
+        <property name="courseName" column="course_name"></property>
+        <property name="startDate" column="start_date"></property>
+        <property name="endDate" column="end_date"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+  
+
+</hibernate-mapping>

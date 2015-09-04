@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          >
+        <property name="location" value="/WEB-INF/databases.properties"></property>
+    </bean>
+
+
+<bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    >
+    <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+    <property name="url" value="${jdbc.url}"></property>
+    <property name="username" value="${jdbc.user}"></property>
+    <property name="password" value="${jdbc.password}"></property>
+</bean>
+
+     <context:annotation-config />
+   
+    <bean id="sessionFactory"
+                      class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    
+      
+       <property name="hibernateProperties">
+<!--            <props>
+                              <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+				</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+                                <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+
+            </props>-->
+             <props>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+                </prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">none</prop>
+<!--                <prop key="hibernate.default_schema">example</prop>-->
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>Title.hbm.xml</value>
+                <value>Hobby.hbm.xml</value>
+                <value>Position.hbm.xml</value>
+                <value>EducationLevel.hbm.xml</value>
+                <value>Employee.hbm.xml</value>
+                <value>Education.hbm.xml</value>
+                <value>Experience.hbm.xml</value>
+                <value>ClaimUpload.hbm.xml</value>
+                <value>Province.hbm.xml</value>
+                <value>Amphur.hbm.xml</value>
+                <value>Supplier.hbm.xml</value>
+                <value>Customer.hbm.xml</value>
+                <value>Product.hbm.xml</value>
+                <value>User.hbm.xml</value>
+                <value>Role.hbm.xml</value>
+                <value>ProductGroup.hbm.xml</value>
+                <value>Project.hbm.xml</value>
+                <value>ProjectItem.hbm.xml</value>
+                <value>ProjectItemFrm.hbm.xml</value>
+                <value>Children.hbm.xml</value>
+                <value>EmployeeLanguage.hbm.xml</value>
+                <value>Branch.hbm.xml</value>
+                <value>Department.hbm.xml</value>
+                <value>Language.hbm.xml</value>
+                <value>Reference.hbm.xml</value>
+                <value>Sibling.hbm.xml</value>
+                <value>Training.hbm.xml</value>
+                <value>Service.hbm.xml</value>
+                <value>Purchase.hbm.xml</value>
+                <value>PurchaseItem.hbm.xml</value>
+                <value>Shipper.hbm.xml</value>
+                <value>Order.hbm.xml</value>
+                <value>OrderItem.hbm.xml</value>
+                <value>Equipment.hbm.xml</value>
+                <value>AttachmentType.hbm.xml</value>
+                <value>Attachment.hbm.xml</value>
+                <value>AttachmentItem.hbm.xml</value>
+                <value>Reservation.hbm.xml</value>
+                <value>ReservationItem.hbm.xml</value>
+                <value>Bank.hbm.xml</value>
+                <value>Income.hbm.xml</value>
+                <value>Expense.hbm.xml</value>
+                <value>Payment.hbm.xml</value>
+                <value>PaymentItem.hbm.xml</value>
+                <value>PaymentByItem.hbm.xml</value>
+            </list>
+        </property>
+
+        
+    </bean>
+    <!-- Transaction Manager is defined -->
+    <bean id="transactionManager"
+              class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Detect @Transactional Annotation -->
+    <tx:annotation-driven transaction-manager="transactionManager"   />
+    
+ 
+    
+      <context:component-scan base-package="com.arg.arsoft.siantluis"/>
+</beans>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/example</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="Position.hbm.xml"/>
+    <mapping resource="Hobby.hbm.xml"/>
+    <mapping resource="EducationLevel.hbm.xml"/>
+    <mapping resource="Employee.hbm.xml"/>
+    <mapping resource="Education.hbm.xml"/>
+    <mapping resource="Title.hbm.xml"/>
+    <mapping resource="Experience.hbm.xml"/>
+    <mapping resource="ClaimUpload.hbm.xml"/>
+    <mapping resource="Province.hbm.xml"/>
+    <mapping resource="Amphur.hbm.xml"/>
+    <mapping resource="Supplier.hbm.xml"/>
+    <mapping resource="Customer.hbm.xml"/>
+    <mapping resource="User.hbm.xml"/>
+    <mapping resource="Role.hbm.xml"/>
+    <mapping resource="ProductGroup.hbm.xml"/>
+    <mapping resource="Project.hbm.xml"/>
+    <mapping resource="ProjectItem.hbm.xml"/>
+    <mapping resource="ProjectItemFrm.hbm.xml"/>
+    <mapping resource="Department.hbm.xml"/>
+    <mapping resource="Branch.hbm.xml"/>
+    <mapping resource="Purchase.hbm.xml"/>
+    <mapping resource="PurchaseItem.hbm.xml"/>
+    <mapping resource="Service.hbm.xml"/>
+    <mapping resource="Children.hbm.xml"/>
+    <mapping resource="Language.hbm.xml"/>
+    <mapping resource="EmployeeLanguage.hbm.xml"/>
+    <mapping resource="Reference.hbm.xml"/>
+    <mapping resource="Sibling.hbm.xml"/>
+    <mapping resource="Training.hbm.xml"/>
+    <mapping resource="Product.hbm.xml"/>
+    <mapping resource="Shipper.hbm.xml"/>
+    <mapping resource="Order.hbm.xml"/>
+    <mapping resource="OrderItem.hbm.xml"/>
+    <mapping resource="Bank.hbm.xml"/>
+    <mapping resource="Expense.hbm.xml"/>
+    <mapping resource="Income.hbm.xml"/>
+    <mapping resource="Payment.hbm.xml"/>
+    <mapping resource="PaymentItem.hbm.xml"/>
+    <mapping resource="PaymentByItem.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

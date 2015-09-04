@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class abstract="true" name="com.arg.arsoft.siantluis.domains.payment.PaymentItem" table="tbl_payment_item">
+        
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <discriminator column="type" force="true" type="string"></discriminator>
+        <version name="version" column="version"></version>
+        <property name="paymentId" column="payment_id"></property>
+        <property name="expenseDate" column="expense_date"></property>
+        <property name="expenseTime" column="expense_time"></property>
+        <property name="expenseAmount" column="amount"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+    <subclass name="com.arg.arsoft.siantluis.domains.payment.PaymentPurchaseItem" extends="com.arg.arsoft.siantluis.domains.payment.PaymentItem" discriminator-value="P">
+        <many-to-one name="purchase" column="purchase_id" class="com.arg.arsoft.siantluis.domains.purchase.Purchase" not-found="ignore"></many-to-one>
+    </subclass>
+    <subclass name="com.arg.arsoft.siantluis.domains.payment.PaymentExpenseItem" extends="com.arg.arsoft.siantluis.domains.payment.PaymentItem" discriminator-value="E">
+        <many-to-one name="expense" column="expense_id" class="com.arg.arsoft.siantluis.domains.master.Expense" not-found="ignore" ></many-to-one>
+        <property name="referenceNo" column="reference_no"></property>
+    </subclass>
+</hibernate-mapping>

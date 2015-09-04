@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.arg.arsoft.siantluis.domains.employee.EmployeeLanguage" table="tbl_employee_language">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="employeeId" column="employee_id"></property>
+        <many-to-one name="language" column="language_id" class="com.arg.arsoft.siantluis.domains.master.Language" not-found="ignore"></many-to-one>
+        <property name="listing" column="flag_listening">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.employee.FlagLanguage</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property name="reading" column="flag_reading">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.employee.FlagLanguage</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        
+        <property name="speaking" column="flag_speaking">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.employee.FlagLanguage</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        
+        <property name="writing" column="flag_writing">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.arg.arsoft.siantluis.domains.employee.FlagLanguage</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        
+   
+        
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+
+</hibernate-mapping>

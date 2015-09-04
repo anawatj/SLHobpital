@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.arg.arsoft.siantluis.domains.employee">
+    <class name="Education" table="tbl_education">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <version name="version" column="version"></version>
+        <property name="employeeId" column="employee_id"></property>
+        <many-to-one name="educationLevel" column="education_level_id" class="com.arg.arsoft.siantluis.domains.master.EducationLevel">
+            
+        </many-to-one>
+        <property name="university" column="university"></property>
+        <property name="major" column="major"></property>
+        <property name="gpa"  column="gpa"></property>
+        <property name="createBy" column="create_by"></property>
+        <property name="createDate" column="create_date"></property>
+        <property name="lastupdateBy" column="lastupdate_by"></property>
+        <property name="lastupdateDate" column="lastupdate_date"></property>
+    </class>
+  
+
+</hibernate-mapping>

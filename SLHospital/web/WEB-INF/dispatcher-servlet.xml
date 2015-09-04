@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   
+    <import resource="database-config.xml"/>
+    <import resource="di-config.xml"/>
+    <context:component-scan base-package="com.arg.arsoft.siantluis.web.controllers"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.arg.arsoft.siantluis.domains.HibernateAwareObjectMapper" />
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <mvc:resources mapping="/**" location="/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <bean id="tileConfiguration" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+    <mvc:view-controller path="/" view-name="index" />
+    <mvc:view-controller path="/login.html"></mvc:view-controller>
+    <mvc:view-controller path="/index.html" ></mvc:view-controller>
+    <mvc:view-controller path="/employee/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/claim/upload.html"></mvc:view-controller>
+    <mvc:view-controller path="/supplier/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/supplier/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/supplier/searchModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/customer/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/customer/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/product/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/product/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/project/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/project/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/project/frmModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabExperience.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabEducation.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabSibling.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabChildren.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabTraining.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabLanguageSkill.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/tabReference.html"></mvc:view-controller>
+    <mvc:view-controller path="/employee/searchModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/purchase/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/purchase/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/purchase/tabProduct.html"></mvc:view-controller>
+    <mvc:view-controller path="/purchase/tabService.html"></mvc:view-controller>
+    <mvc:view-controller path="/product/searchModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/user/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/user/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/role/searchMultiModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/order/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/order/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/customer/searchModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/attachment/entryModal.html"></mvc:view-controller>
+    <mvc:view-controller path="/reservation/entry.html"></mvc:view-controller>
+    <mvc:view-controller path="/reservation/list.html"></mvc:view-controller>
+    <mvc:view-controller path="/reservation/tabRoomItem.html"></mvc:view-controller>
+    <mvc:view-controller path="/reservation/tabMotorItem.html"></mvc:view-controller>
+    <mvc:view-controller path="/reservation/tabItItem.html"></mvc:view-controller>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean id="localeChangeInterceptor"
+                  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                <property name="paramName" value="lang" />
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="lang" />
+        <property name="defaultLocale" value="ENGLISH" />
+    </bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000"></property>
+    </bean>
+    
+  
+</beans>
