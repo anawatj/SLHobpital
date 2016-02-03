@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Saintluis Hospital</title>
+        <title>HHH Hospital</title>
         <link  rel="stylesheet" href="${context}/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
         <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common-bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -31,7 +31,7 @@
                     <img src="${context}/resources/images/logo.gif"/>
                 </div>
                 <div class='col-xs-8' style="color:black">
-                    <label style="font-size:40px;font-weight:bolder">Saintluis Hospital System</label>
+                    <label style="font-size:40px;font-weight:bolder">HHH Hospital System</label>
                 </div>
             </div>
             <div class="row">
@@ -53,7 +53,7 @@
      
             <div class="row" style="text-align:center ">
                 <div class="col-xs-12">
-                    Copy right by Saintluis hospital
+                    Copy right by HHH hospital
                 </div>
             </div>
         </div>

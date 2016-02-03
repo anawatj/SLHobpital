@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Saintluis Hospital</title>
+        <title>HHH Hospital</title>
         <link  rel="stylesheet" href="${context}/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
         <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common-bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -85,7 +85,7 @@
                 <div class="col-xs-8">
 
 
-                    <h1>Saintluis Hospital System</h1>
+                    <h1>HHH Hospital System</h1>
                 </div>
             </div>
 
